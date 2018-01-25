@@ -7,29 +7,33 @@
 //
 
 import Cocoa
-
+var playAgain = "yes"
+while playAgain == "yes"{
 //Generate a random number
+// TODO: Cast randomNumber to an int
 var randomNumber = Int(arc4random_uniform(100))
 var guess: Int?
-
-//Ask for user input
+var tries = 0
 print("Please guess a number.")
-
-//Take user input
 guess = Int(readLine()!)!
-
-if randomNumber == guess {
-    print("YOU WON!!!!!!!!! 🎉")
-} else if randomNumber > guess! {
-    print("The number is higher! 🤦‍♂️")
-} else if randomNumber < guess! {
-    print("The number is lower! 🤦‍♂️")
+print(randomNumber)
+//Determine wrong or right(Loop until correct)
+while guess != randomNumber && tries != 5 {
+    if randomNumber > guess!  {
+        print("The number was higher! 🤦‍♂️")
+    } else if randomNumber < guess! {
+        print("The Random Number was lower! 🤦‍♂️")
+    }
+    print("Guess again")
+    guess = Int(readLine()!)!
+    tries += 1
 }
-//Determine if it's wrong or right (Loop until correct)
-
-
-//If correct, ask if they want to play again
-
-
-//If incorrect, tell them the correct answer and ask them to play again
+//If correct ask if they want to play again
+if randomNumber == guess! {
+    print("YOU WON !!!!!!!! 🎉")
+}
+//If incorrect tell them the correct answer and ask them to play again
+print("Do you want to play again?")
+    playAgain = readLine()!
+}
 
